@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
+import { api } from '../../services/api';
 
 import { Container } from './styles';
 
 export const TransactionsTable: React.FC = () => {
   useEffect(() => {
-    fetch('http://localhost:3000/api/transactions')
-      .then(respnse => respnse.json())
-      .then(data => console.log(data))
-      . catch(e => {
-        console.error(e.message)
-      })
+    api.get('transactions')
+      .then(response => console.log(response.data))
+     
   }, []);
 
   return (
@@ -21,7 +19,7 @@ export const TransactionsTable: React.FC = () => {
             <th>Value</th>
             <th>Category</th>
             <th>Date</th>
-          </tr>
+          </tr> 
         </thead>
         <tbody>
           <tr>
