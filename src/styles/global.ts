@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: var(---background);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body, input, button, textarea {
@@ -53,4 +54,49 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  .react-modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .react-modal-content {
+    width: 100%;
+    max-height: 36.75rem;
+    height: 100%;
+    max-width: 36rem;
+    background: var(--Background);
+    padding: 4rem 3rem;
+    position: relative;
+
+    border-radius: 0.3125rem;
+  }
+
+  .react-modal-close {
+    position: absolute;
+    width: 0.875rem;
+    height: 0.875rem;
+    right: 1.3125rem;
+    top: 1.3125rem;
+    border: 0;
+    background: transparent;
+
+    transition: filter 300ms ease-in-out;
+
+    &:hover {
+      filter: brightness(0.9);
+      transform: scale(1.1);
+    }
+  }
+
 `;
