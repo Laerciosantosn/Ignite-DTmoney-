@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Container } from './styles';
 
 export const TransactionsTable: React.FC = () => {
+  useEffect(() => {
+    fetch('http://localhost:3000/api/transactions')
+      .then(respnse => respnse.json())
+      .then(data => console.log(data))
+      . catch(e => {
+        console.error(e.message)
+      })
+  }, []);
+
   return (
     <Container>
       <table>
