@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { darken, transparentize } from 'polished';
 
 export const ContainerForm = styled.form`
+
   h2 {
     color: var(--Title);
     font-size: 1.5rem;
@@ -17,9 +18,12 @@ export const ContainerForm = styled.form`
     color: var(--Title);
     border: 0.0625rem solid #D7D7D7;
 
+
+    -moz-outline-radius: 0.3125rem;
+
+
     &:focus {
-    outline-color: var(--Green);
-    outline-style: solid;
+      outline: 0.0625rem solid var(--Green);
     }
 
     &::placeholder {
@@ -46,7 +50,6 @@ export const ContainerForm = styled.form`
     font-weight: 600;
     color: var(--Shape);
     border: 0;
-
     transition: filter 300ms ease-in-out;
 
     &:hover {
@@ -78,6 +81,7 @@ export const RadioBox = styled.button<RadioButtonProps>`
     height: 4rem;
     border-radius: 0.3125rem;
     
+
     border: solid 0.09375rem rgba(150, 156, 178, 0.2);
     background: ${(props) => props.isActive 
       ? transparentize(0.9, colors[props.activeColor])
@@ -97,6 +101,8 @@ export const RadioBox = styled.button<RadioButtonProps>`
     }
 
     &:focus {
+      -moz-outline-radius: 0.3125rem;
+      outline-width: 0.5px;
       outline-color: ${(props) => props.isActive 
       ?  colors[props.activeColor]
       : 'transparent'

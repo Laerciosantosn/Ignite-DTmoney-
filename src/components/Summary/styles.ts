@@ -13,10 +13,8 @@ export const Container = styled.div`
     height: 8.5rem;
     border-radius: 0.3125rem;
     
-    /* &:not(:last-child) {
-      color: var(--Text);
-    } */
-    
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+     
     &:last-child {
       background: var(--Green);
       color: var(--Shape);

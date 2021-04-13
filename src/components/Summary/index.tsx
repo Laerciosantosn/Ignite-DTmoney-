@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import { TransactionsContext } from '../../TransactionContext';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 import iconmeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 import totalImg from '../../assets/total.svg';
-import { TransactionsContext } from '../../TransactionContext';
 
 import { Container } from './styles';
 
@@ -11,25 +12,39 @@ export function Summary ()  {
 
   const { transactions } = useContext(TransactionsContext);
 
-  console.log(transactions);
+  const summary = transactions.reduce((acc, transaction) => {
+    if(transaction.type === 'deposit') {
+      acc.deposits += transaction.amount;
+      acc.total += transaction.amount
+    } else {
+      acc.withdraws += transaction.amount;
+      acc.total -= transaction.amount
+    }
 
+    return acc;
+  }, {
+    deposits: 0,
+    withdraws: 0,
+    total: 0,
+  })
+ 
   return (
     <Container>
   
       <div>
         <header>
-          <p>Entrada</p>
+          <p>Deposit</p>
           <img src={iconmeImg} alt="Entradas"/>
         </header>
-        <strong> US$ 7000,00 </strong>
+        <strong> {formatCurrency(summary.deposits)} </strong>
       </div>
 
       <div>
         <header>
-          <p>Saídas</p>
+          <p>Withdraw</p>
           <img src={outcomeImg} alt="Saídas"/>
         </header>
-        <strong> US$ -2000,00 </strong>
+        <strong> -{formatCurrency(summary.withdraws)} </strong>
       </div>
 
       <div>
@@ -37,7 +52,7 @@ export function Summary ()  {
           <p>Total</p>
           <img src={totalImg} alt="Total"/>
         </header>
-        <strong> US$ 5000,00 </strong>
+        <strong> {formatCurrency(summary.total)} </strong>
       </div>
 
     </Container>

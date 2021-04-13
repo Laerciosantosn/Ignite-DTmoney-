@@ -21,10 +21,16 @@ export const Container = styled.div`
       padding: 1.25rem 2rem;
       background: var(--Shape);
       color: var(--Text);
-      border-radius: 0.3125rem;
-      
+
       &:first-child {
+        border-top-left-radius: 0.3125rem ; 
+        border-bottom-left-radius: 0.3125rem; 
         color: var(--Title);
+      }
+
+      &:last-child  {
+        border-top-right-radius: 0.3125rem ; 
+        border-bottom-right-radius: 0.3125rem; 
       }
 
       &.deposit {

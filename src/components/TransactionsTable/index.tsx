@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { TransactionsContext } from '../../TransactionContext';
+import { formatCurrency } from '../../utils/formatCurrency';
+import { formatDate } from '../../utils/formatDate';
 
 import { Container } from './styles';
 
@@ -25,16 +27,11 @@ export const TransactionsTable: React.FC = () => {
               <td>{transaction.title}</td>
               <td className={transaction.type}>
                 {transaction.type === 'withdraw' ? '- ' : ''}
-                {new Intl.NumberFormat('pt-Br', {
-                  style: 'currency',
-                  currency: 'USD',
-                }).format(transaction.amount)}
+                {formatCurrency(transaction.amount)}
               </td>
               <td>{transaction.category}</td>
               <td>
-                {new Intl.DateTimeFormat('pt-Br').format(
-                  new Date(transaction.createdAt)
-                )}
+                {formatDate(transaction.createdAt)}
               </td>
             </tr>
             )
