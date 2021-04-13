@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from  'react';
-import { api } from './services/api';
+import { createContext, ReactNode, useContext, useEffect, useState } from  'react';
+import { api } from '../services/api';
 
 interface TransactionTypes {
   id: number,
@@ -33,7 +33,7 @@ interface TransactionsContextData {
   createTransaction: (transaction: TransactionInput) => Promise<void>;
 }
 
-export const TransactionsContext = createContext<TransactionsContextData>(
+const TransactionsContext = createContext<TransactionsContextData>(
   {} as TransactionsContextData
 );
 
@@ -68,4 +68,11 @@ export function TransactionsProvide({ children }: TransactionsProviderProps){
       {children}
     </TransactionsContext.Provider>
   )
+}
+
+// Crindo um contexto proprio para redizir importações
+export function useTransactions () {
+  const context =  useContext(TransactionsContext);
+
+  return context;
 }
