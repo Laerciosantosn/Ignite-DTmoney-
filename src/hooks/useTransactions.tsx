@@ -40,6 +40,7 @@ const TransactionsContext = createContext<TransactionsContextData>(
 export function TransactionsProvide({ children }: TransactionsProviderProps){
   const [transactions, setTransactions] = useState<TransactionTypes[]>([]);
 
+
   useEffect(() => {
     api.get('transactions')
       .then(response => setTransactions(response.data.transactions))
@@ -57,8 +58,8 @@ export function TransactionsProvide({ children }: TransactionsProviderProps){
 
 
     setTransactions([...transactions, transaction]);
-  }
 
+  }
 
   return (
     <TransactionsContext.Provider value={{

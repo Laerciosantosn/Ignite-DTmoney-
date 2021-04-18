@@ -99,5 +99,4 @@ export const GlobalStyle = createGlobalStyle`
       transform: scale(1.1);
     }
   }
-
 `;
